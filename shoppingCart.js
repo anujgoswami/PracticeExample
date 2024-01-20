@@ -54,17 +54,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const renderCart = () => {
         cartList.innerHTML = ''; // Clear the cart list
         cart.forEach(item => {
-            const cartItem = document.createElement('li');
-            cartItem.className = 'cartItem';
-            cartItem.textContent = `${item.name} - $${item.price}`;
-            cartList.appendChild(cartItem);
+        const cartItem = document.createElement('li');
+        cartItem.className = 'cartItem';
+        cartItem.textContent = `${item.name} - $${item.price}`;
 
-            const removeButton = document.createElement('button');
-            removeButton.textContent = 'Remove';
-            removeButton.addEventListener('click', () => removeFromCart(item.id));
-            cartItem.appendChild(removeButton);
-            cartList.appendChild(cartItem);
-        });
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'Remove';
+        removeButton.addEventListener('click', () => removeFromCart(item.id));
+
+        cartItem.appendChild(removeButton); // Add remove button to the cart item
+        cartList.appendChild(cartItem); // Add the cart item to the cart list
+    });
 
         // Add total 
         const totalElement = document.createElement('div');
